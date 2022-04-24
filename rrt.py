@@ -271,7 +271,7 @@ def plot(G, obstacles, radius, path=None):
     fig, ax = plt.subplots()
 
     for obs in obstacles:
-        circle = plt.Circle(obs, radius, color='red')
+        circle = plt.Circle(obs, radius, color='black')
         ax.add_artist(circle)
 
     ax.scatter(px, py, c='cyan')
@@ -300,11 +300,13 @@ def pathSearch(startpos, endpos, obstacles, n_iter, radius, stepSize):
 
 
 if __name__ == '__main__':
-    startpos = (0., 0.)
-    endpos = (5., 5.)
-    obstacles = [(1., 1.), (2., 2.)]
+    # startpos = (0., 0.)
+    # endpos = (5., 5.)
+    startpos = (6., 7.)
+    endpos = (.5,1.)
+    obstacles = [(1.9,6.3),(5.85,6.),(2.3,1.8),(5.8,3.3)]
     n_iter = 200
-    radius = 0.5
+    radius = 0.8
     stepSize = 0.7
 
     G = RRT(startpos, endpos, obstacles, n_iter, radius, stepSize)

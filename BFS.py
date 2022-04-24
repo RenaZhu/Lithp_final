@@ -3,17 +3,18 @@ from random import randint
 import cv2 as cv
 
 
-img = np.matrix(cv.imread("MAP.png",cv.IMREAD_GRAYSCALE))
+img = np.matrix(cv.imread("Brewery.png",cv.IMREAD_GRAYSCALE))
 img[img<255] = 0
 
-start = (735, 842)
-goal = (260,814)
+start = (600, 700)
+goal = (50,100)
 
 
 grid = img
 
-h, w = img.shape[:2]
-
+w, h = img.shape[:2]
+XRange = range(w)
+YRange = range(h)
 
 # Create matrix section
 # with open("Matrix.txt","w") as f:
@@ -32,7 +33,7 @@ while q:
   path.append((x,y))
   dir = [[0,1],[1,0],[0,-1],[-1,0]]
   for dx,dy in dir:
-    if grid[x+dx,y+dy]!= 1 and grid[x+dx,y+dy]!= 0:
+    if x+dx in XRange and y+dy in YRange and grid[x+dx,y+dy]!= 1 and grid[x+dx,y+dy]!= 0:
         f.write(f"{len(path)},{(x,y)}")
         q.append((x+dx,y+dy))
         if (x+dx,y+dy) == goal:
